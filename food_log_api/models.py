@@ -34,11 +34,12 @@ class HydrationLog(models.Model):
     def __str__(self):
         return f"{self.user.username} - {self.beverage_type} ({self.amount}ml)"
 
-
-
 class FoodPreference(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     vegetarian = models.BooleanField(default=False)
+    vegan = models.BooleanField(default=False)  # ✅ New field
+    gluten_free = models.BooleanField(default=False)  # ✅ New field
+    dairy_free = models.BooleanField(default=False)  # ✅ New field
     nut_free = models.BooleanField(default=False)
     calorie_target = models.IntegerField(null=True, blank=True)
     excluded_ingredients = models.JSONField(default=list)  # List of ingredients to avoid
